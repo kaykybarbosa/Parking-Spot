@@ -31,13 +31,13 @@ public class ParkingSpotController {
 
     @PostMapping
     public ResponseEntity<Object> saveParkingSpot(@RequestBody @Valid ParkingSpotDTO parkingSpotDTO){
-        if (parkingSpotService.existeByLicensePlateCar(parkingSpotDTO.getLicensePlateCar())){
+        if (parkingSpotService.existByLicensePlateCar(parkingSpotDTO.getLicensePlateCar())){
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: License Plate Car is already is use!");
         }
-        if (parkingSpotService.existeByParkingSpotNumber(parkingSpotDTO.getParkingSpotNumber())){
+        if (parkingSpotService.existByParkingSpotNumber(parkingSpotDTO.getParkingSpotNumber())){
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: Parking Spot is already is use!");
         }
-        if (parkingSpotService.existeByApartmentAndBlock(parkingSpotDTO.getApartment(), parkingSpotDTO.getBlock())){
+        if (parkingSpotService.existByApartmentAndBlock(parkingSpotDTO.getApartment(), parkingSpotDTO.getBlock())){
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: Parking Spot already registered for this apartment/block!");
         }
 
@@ -61,7 +61,7 @@ public class ParkingSpotController {
         return ResponseEntity.status(HttpStatus.OK).body(parkingSpotModelOptional.get());
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteParkingSpot(@PathVariable(value = "id") UUID id){
         Optional<ParkingSpotModel> parkingSpotModelOptional = parkingSpotService.findById(id);
         if (!parkingSpotModelOptional.isPresent()){
@@ -71,7 +71,7 @@ public class ParkingSpotController {
         return ResponseEntity.status(HttpStatus.OK).body("Parking Spot deleted successfully.");
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity<Object> deleteParkingSpot(@PathVariable(value = "id") UUID id,
                                                     @RequestBody @Valid ParkingSpotDTO parkingSpotDTO){
         Optional<ParkingSpotModel> parkingSpotModelOptional = parkingSpotService.findById(id);
