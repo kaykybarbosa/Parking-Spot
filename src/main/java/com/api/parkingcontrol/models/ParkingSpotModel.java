@@ -1,4 +1,4 @@
-package com.api.parkingcontrol.Models;
+package com.api.parkingcontrol.models;
 
 import jakarta.persistence.*;
 

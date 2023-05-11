@@ -1,7 +1,7 @@
 package com.api.parkingcontrol.controllers;
 
-import com.api.parkingcontrol.Dtos.ParkingSpotDTO;
-import com.api.parkingcontrol.Models.ParkingSpotModel;
+import com.api.parkingcontrol.dtos.ParkingSpotDTO;
+import com.api.parkingcontrol.models.ParkingSpotModel;
 import com.api.parkingcontrol.services.ParkingSpotService;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
@@ -17,7 +17,6 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
