@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
